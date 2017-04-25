@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tagged Story Burndown</title>
+
+    <script type="text/javascript" src="/apps/2.1/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function() {
+            Ext.define('TaggedStoryBurndownApp', {
+                extend: 'Rally.app.App',
+            
+                launch: function() {
+                    this.add({
+                        xtype: 'rallystandardreport',
+                        project: Rally.util.Ref.getRelativeUri(this.getContext().getProject()),
+                        projectScopeUp: this.getContext().getProjectScopeUp(),
+                        projectScopeDown: this.getContext().getProjectScopeDown(),
+                        width: 600,
+                        height: 400,
+                        reportConfig: {
+                            report: Rally.ui.report.StandardReport.Reports.TaggedStoryBurndown,
+                            tag: 'Data Center Move',
+                            start_date: '15-Feb-2017'
+                        }
+                    });
+                }
+            });
+            
+
+            Rally.launchApp('TaggedStoryBurndownApp', {
+              name: 'Tagged Story Burndown'
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        
+    </style>
+</head>
+<body></body>
+</html>
